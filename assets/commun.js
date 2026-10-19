@@ -20,6 +20,12 @@
     });
   });
 
+  // Liens vers les pages pas encore maquettées : un clic ne fait rien.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href="#"]');
+    if (a) e.preventDefault();
+  });
+
   // Formulaires : rien n'est envoyé dans une maquette.
   document.querySelectorAll('form').forEach(function (f) {
     f.addEventListener('submit', function (e) {
