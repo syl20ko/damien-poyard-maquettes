@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damien Poyard, chanteur accordéoniste | Maquette 4 Salon</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="copyright" content="Maquette (c) Sylvain Caron 2026. Proposition non contractuelle.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/barre.css">
+<style>
+:root{
+  --fond:#faf8f4;--blanc:#fff;--encre:#141414;--gris:#5f5f5f;--clair:#8a8a8a;--trait:#ebe7df;
+  --accent:#a8823c;--accent-d:#7d5f27;
+  --display:'Marcellus',Georgia,serif;--body:'Figtree',system-ui,sans-serif;
+  --r:20px;--ombre:0 1px 2px rgba(20,20,20,.04),0 18px 40px -24px rgba(20,20,20,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{overflow-x:clip;font-family:var(--body);background:var(--fond);color:var(--encre);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+:focus-visible{outline:2px solid var(--encre);outline-offset:3px}
+svg{flex:none}
+
+/* menu en pilule flottante */
+.entete{position:sticky;top:12px;z-index:30;padding:12px 0}
+.barre-cachee .entete{top:0}
+.pilule{display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--blanc);border-radius:16px;padding:10px 12px 10px 22px;box-shadow:var(--ombre);max-width:980px;margin-inline:auto;position:relative}
+.pilule .logo{font-family:var(--display);font-size:20px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{text-decoration:none;font-size:16px;padding:10px 14px;border-radius:10px;transition:background .2s}
+.nav a:hover{background:var(--fond)}
+.nav .yt{display:inline-flex;align-items:center;gap:8px;background:var(--encre);color:#fff;margin-left:6px}
+.nav .yt:hover{background:#333}
+.burger{display:none;background:none;border:1px solid var(--trait);border-radius:10px;padding:8px 14px;font:700 16px var(--body);cursor:pointer}
+
+/* mosaique */
+.mosaique{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:min(78vh,720px);min-height:520px;margin-top:8px}
+.mosaique figure{position:relative;border-radius:var(--r);overflow:hidden;background:#e9e5dd}
+.mosaique img{width:100%;height:100%;object-fit:cover}
+.mosaique .grand{grid-row:1/3}
+.mosaique .grand img{object-position:50% 30%;filter:grayscale(1) contrast(1.04)}
+.mosaique .grand::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(0,0,0,.72))}
+.titre-hero{position:absolute;left:40px;right:40px;bottom:36px;z-index:2;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.titre-hero h1{font-size:clamp(40px,5.6vw,78px);letter-spacing:.06em;text-transform:uppercase;line-height:1}
+.titre-hero p{font-size:19px;margin-top:10px;color:#f1eee8;max-width:40ch}
+
+/* trois rubriques */
+.trois{padding:72px 0 24px}
+.trois .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rub{display:block;text-decoration:none;background:var(--blanc);border-radius:var(--r);padding:32px 28px;box-shadow:var(--ombre);transition:transform .25s,box-shadow .25s;cursor:pointer;position:relative}
+.rub:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(20,20,20,.04),0 26px 50px -24px rgba(20,20,20,.3)}
+.rub small{display:block;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-d);font-weight:700}
+.rub b{display:block;font-family:var(--display);font-weight:400;font-size:30px;line-height:1.15;margin:14px 0 8px}
+.rub span{color:var(--gris);font-size:17px}
+.rub .fl{position:absolute;right:24px;top:28px;width:40px;height:40px;border-radius:50%;border:1px solid var(--trait);display:grid;place-items:center;transition:background .2s,color .2s,border-color .2s}
+.rub:hover .fl{background:var(--encre);border-color:var(--encre);color:#fff}
+.rub .fl svg{width:18px;height:18px}
+
+/* sections */
+.sec{padding:96px 0}
+.sur{display:block;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-d);font-weight:700;margin-bottom:12px}
+.sec h2{font-size:clamp(36px,4.4vw,56px)}
+.lien{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;border-bottom:1px solid var(--encre);padding-bottom:4px}
+.lien:hover{color:var(--accent-d);border-color:var(--accent-d)}
+.lien svg{width:18px;height:18px}
+
+/* agenda : bandeau noir + grand mot en contour */
+.agenda{display:grid;grid-template-columns:.8fr 1.2fr;border-radius:var(--r);overflow:hidden;background:#0f0f0f;color:#fff;position:relative}
+.agenda .photo{position:relative;min-height:100%}
+.agenda .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.agenda .liste{padding:56px 48px 120px;position:relative;z-index:1}
+.agenda .sur{color:#d9b56e}
+.agenda h2{color:#fff;margin-bottom:28px}
+.contour{position:absolute;left:0;right:0;bottom:-18px;font-family:var(--display);font-size:clamp(80px,13vw,190px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.35);white-space:nowrap;text-transform:uppercase;letter-spacing:.04em;pointer-events:none;text-align:right;padding-right:24px}
+.date{display:grid;grid-template-columns:96px 1fr auto;gap:20px;align-items:center;padding:18px 0;border-top:1px solid rgba(255,255,255,.14)}
+.date:last-of-type{border-bottom:1px solid rgba(255,255,255,.14)}
+.date .j{font-family:var(--display);font-size:16px;color:#cfcfcf;text-transform:uppercase;letter-spacing:.08em;line-height:1.2}
+.date .j b{display:block;font-family:var(--display);font-weight:400;font-size:40px;color:#fff;letter-spacing:0}
+.date h3{font-family:var(--body);font-weight:700;font-size:19px}
+.date p{color:#bdbdbd;font-size:16px}
+.date a{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;text-decoration:none;font-weight:700;font-size:16px;padding:10px 16px;border:1px solid rgba(255,255,255,.35);border-radius:999px;transition:background .2s,color .2s}
+.date a:hover{background:#fff;color:#111}
+.date a svg{width:16px;height:16px}
+.agenda .tout{margin-top:28px;color:#fff;border-color:#fff}
+
+/* discographie */
+.tete{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.disco{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.disco a{text-decoration:none;display:block}
+.disco .p{background:var(--blanc);border-radius:16px;padding:18px;box-shadow:var(--ombre);transition:transform .3s}
+.disco a:hover .p{transform:translateY(-6px)}
+.disco img{aspect-ratio:560/500;object-fit:contain;width:100%}
+.disco b{display:block;font-family:var(--display);font-weight:400;font-size:20px;margin-top:16px;line-height:1.25}
+.disco span{display:block;color:var(--gris);font-size:16px;margin-top:4px}
+.disco .neuf{display:block;width:max-content;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-d);margin-bottom:6px}
+.cheque{margin-top:32px;color:var(--gris);font-size:17px}
+.cheque a{color:var(--encre);font-weight:700}
+
+/* partitions */
+.part{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.part p.intro{color:var(--gris);margin:16px 0 24px;max-width:40ch}
+.sacem{font-family:var(--display);font-size:20px;line-height:1.5;color:var(--encre);border-left:2px solid var(--accent);padding-left:20px;margin-top:28px;quotes:none;display:block}
+.pistes{list-style:none;background:var(--blanc);border-radius:var(--r);box-shadow:var(--ombre);padding:8px 28px}
+.piste{display:grid;grid-template-columns:48px 1fr auto;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--trait)}
+.piste:last-child{border-bottom:0}
+.play{width:46px;height:46px;border-radius:50%;border:1px solid var(--trait);background:var(--blanc);display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.play:hover,.joue .play{background:var(--encre);border-color:var(--encre);color:#fff}
+.play svg{width:16px;height:16px}
+.play .pause{display:none}.joue .play .lect{display:none}.joue .play .pause{display:block}
+.piste small{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--clair);font-weight:700}
+.piste h3{font-family:var(--body);font-weight:700;font-size:19px;line-height:1.3}
+.piste a.dl{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:16px;color:var(--gris);white-space:nowrap}
+.piste a.dl:hover{color:var(--encre)}
+.piste a.dl svg{width:16px;height:16px}
+.ligne-son{height:2px;background:var(--trait);margin-top:8px;display:none;overflow:hidden}
+.joue .ligne-son{display:block}
+.ligne-son i{display:block;height:100%;width:0;background:var(--accent);animation:avance 30s linear forwards}
+@keyframes avance{to{width:100%}}
+
+/* lettre */
+.lettre{text-align:center;padding:96px 0 110px}
+.lettre h2{font-size:clamp(32px,4vw,48px);max-width:18ch;margin:0 auto}
+.lettre p{color:var(--gris);margin:14px auto 30px;max-width:46ch}
+.lettre form{display:flex;max-width:520px;margin:0 auto;background:var(--blanc);border-radius:14px;box-shadow:var(--ombre);padding:6px}
+.lettre input{flex:1;border:0;background:none;padding:0 18px;font:400 18px var(--body);min-width:0}
+.lettre input:focus{outline:none}
+.lettre form:focus-within{outline:2px solid var(--encre);outline-offset:3px}
+.lettre button{background:var(--encre);color:#fff;border:0;border-radius:10px;padding:14px 22px;font:700 17px var(--body);cursor:pointer;transition:background .2s}
+.lettre button:hover{background:#333}
+.lettre small{display:block;margin-top:12px;color:var(--clair);font-size:15px}
+
+footer{background:var(--blanc);border-top:1px solid var(--trait);padding:44px 0 30px;font-size:16px;color:var(--gris)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer .logo{font-family:var(--display);font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:var(--encre)}
+footer nav{display:flex;gap:22px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:var(--encre)}
+footer .bas{flex-basis:100%;font-size:14px;color:var(--clair);border-top:1px solid var(--trait);padding-top:18px}
+
+.arrive{animation:monte .9s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
+@keyframes monte{from{opacity:0;transform:translateY(16px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media(max-width:1024px){
+  .agenda,.part{grid-template-columns:1fr}
+  .agenda .photo{height:320px}
+  .disco{grid-template-columns:repeat(2,1fr)}
+  .part{gap:32px}
+}
+@media(max-width:860px){
+  .nav{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;background:var(--blanc);border-radius:16px;box-shadow:var(--ombre);flex-direction:column;align-items:stretch;padding:10px}
+  .nav.ouvert{display:flex}
+  .nav a{font-size:18px;padding:12px 14px}
+  .nav .yt{margin:6px 0 0;justify-content:center}
+  .burger{display:inline-flex}
+  .trois .wrap{grid-template-columns:1fr}
+  .mosaique{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;height:auto;min-height:0}
+  .mosaique .grand{grid-column:1/-1;grid-row:auto;aspect-ratio:4/5}
+  .mosaique .petit{aspect-ratio:1/1}
+}
+@media(max-width:560px){
+  body{font-size:17px}
+  .pilule .logo{font-size:16px;letter-spacing:.1em}
+  .titre-hero{left:20px;right:20px;bottom:22px}
+  .titre-hero p{font-size:17px}
+  .sec{padding:64px 0}
+  .agenda .liste{padding:36px 22px 96px}
+  .date{grid-template-columns:70px 1fr;gap:14px}
+  .date a{grid-column:2;justify-self:start}
+  .date .j b{font-size:32px}
+  .disco{gap:16px}
+  .disco .p{padding:10px}
+  .disco b{font-size:17px}
+  .pistes{padding:4px 16px}
+  .piste{grid-template-columns:44px 1fr}
+  .piste a.dl{grid-column:2}
+  .lettre form{flex-direction:column;padding:8px}
+  .lettre input{padding:12px}
+}
+</style>
+</head>
+<body>
+<div class="barre-maq" role="navigation" aria-label="Navigation entre les maquettes"><a class="retour" href="index.html">&#8592; <span class="mot">Voir les</span> 5 visuels</a><div class="onglets"><a href="maquette-1-affiche.html"><b>1</b><span>Affiche</span></a><a href="maquette-2-scene.html"><b>2</b><span>Scène</span></a><a href="maquette-3-pupitre.html"><b>3</b><span>Pupitre</span></a><a href="maquette-4-salon.html" class="actif" aria-current="page"><b>4</b><span>Salon</span></a><a href="maquette-5-page-blanche.html"><b>5</b><span>Page blanche</span></a></div><div class="fleches"><a href="maquette-3-pupitre.html" title="Maquette précédente" aria-label="Maquette précédente">&#8249;</a><a href="maquette-5-page-blanche.html" title="Maquette suivante" aria-label="Maquette suivante">&#8250;</a></div></div>
+
+<header class="entete">
+  <div class="wrap">
+    <div class="pilule">
+      <a class="logo" href="#">Damien Poyard</a>
+      <button class="burger" data-menu aria-controls="nav4" aria-expanded="false">Menu</button>
+      <nav class="nav" id="nav4" aria-label="Menu principal">
+        <a href="#agenda">Agenda</a>
+        <a href="#boutique">Boutique</a>
+        <a href="#partitions">Partitions et bandes orchestre</a>
+        <a class="yt" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9L15.5 12l-5.8 3.1Z"/></svg>YouTube</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="wrap">
+  <div class="mosaique">
+    <figure class="grand arrive"><img src="assets/img/damien-portrait.webp" alt="Damien Poyard et son accordéon" width="1400" height="1400"><div class="titre-hero"><h1>Damien Poyard</h1><p>Chanteur accordéoniste. Partitions et bandes orchestre pour les bals et les thés dansants.</p></div></figure>
+    <figure class="petit arrive d1"><img src="assets/img/damien-concert-2.webp" alt="Damien Poyard en concert, accordéon rouge" width="1024" height="678"></figure>
+    <figure class="petit arrive d2"><img src="assets/img/galerie-6.webp" alt="Une salle comble pendant un bal" width="800" height="600"></figure>
+  </div>
+</section>
+
+<nav class="trois" aria-label="Les trois rubriques">
+  <div class="wrap">
+    <a class="rub" href="#agenda"><small>01</small><b>Agenda</b><span>Mes prochaines dates et les numéros pour réserver</span><span class="fl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="rub" href="#boutique"><small>02</small><b>Boutique</b><span>Albums en CD et en clé USB, extraits à écouter</span><span class="fl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="rub" href="#partitions"><small>03</small><b>Partitions et bandes orchestre</b><span>Gratuites, à télécharger tout de suite</span><span class="fl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  </div>
+</nav>
+
+<section class="sec" id="agenda">
+  <div class="wrap">
+    <div class="agenda">
+      <div class="photo"><img src="assets/img/galerie-7.webp" alt="Le public debout devant la scène" width="800" height="600"></div>
+      <div class="liste">
+        <span class="sur">Agenda</span>
+        <h2>Les prochaines dates</h2>
+        <article class="date"><div class="j"><b>22</b>Jeu. oct.</div><div><h3>Digoin (71)</h3><p>3 rue de la Barre. Repas dansant dès 11h30 ou thé dansant dès 15h</p></div><a href="tel:+33676287297"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>06 76 28 72 97</a></article>
+        <article class="date"><div class="j"><b>25</b>Dim. oct.</div><div><h3>Abbeville (80)</h3><p>Théâtre Municipal, 14h30</p></div><a href="tel:+33322313489"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>03 22 31 34 89</a></article>
+        <article class="date"><div class="j"><b>1</b>Dim. nov.</div><div><h3>Saint-Germain-du-Bois (71)</h3><p>Salle des fêtes, 14h30 à 19h</p></div><a href="tel:+33682974705"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>06 82 97 47 05</a></article>
+        <a class="lien tout" href="#">Tout l'agenda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="contour" aria-hidden="true">En tournée</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="boutique" style="padding-top:24px">
+  <div class="wrap">
+    <div class="tete"><div><span class="sur">Boutique</span><h2>Discographie</h2></div><a class="lien" href="#">Tous les albums <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <div class="disco">
+      <a href="#"><div class="p"><img src="assets/img/volume_23.webp" alt="Pochette du volume 23" width="559" height="499"></div><b><span class="neuf">Nouveau</span>La vie est belle, chantons l'amour</b><span>Vol. 23 · CD 10 € · Clé USB 15 €</span></a>
+      <a href="#"><div class="p"><img src="assets/img/volume_22.webp" alt="Pochette du volume 22" width="558" height="499"></div><b>Y'a pas mieux que la musique</b><span>Vol. 22 · CD 10 € · Clé USB 15 €</span></a>
+      <a href="#"><div class="p"><img src="assets/img/volume_21.webp" alt="Pochette du volume 21" width="558" height="499"></div><b>La vie est faite pour danser</b><span>Vol. 21 · CD 10 € · Clé USB 15 €</span></a>
+      <a href="#"><div class="p"><img src="assets/img/volume_20.webp" alt="Pochette du volume 20" width="560" height="500"></div><b>Olé Ola pour la musique</b><span>Vol. 20 · CD 10 € · Clé USB 15 €</span></a>
+    </div>
+    <p class="cheque">Vous préférez payer par chèque ? <a href="#">Imprimer le bon de commande</a></p>
+  </div>
+</section>
+
+<section class="sec" id="partitions" style="padding-top:24px">
+  <div class="wrap">
+    <div class="part">
+      <div>
+        <span class="sur">Partitions et bandes orchestre</span>
+        <h2>Derniers ajouts</h2>
+        <p class="intro">Gratuites, sans créer de compte. Écoutez un extrait, puis téléchargez la partition ou la bande orchestre.</p>
+        <a class="lien" href="#">Tout le catalogue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <q class="sacem">Dans le cas d'une diffusion publique de ces oeuvres, Merci de bien vouloir mentionner les titres et compositeurs sur votre programme SACEM.</q>
+      </div>
+      <ol class="pistes">
+        <li class="piste" data-piste><button class="play" data-play aria-pressed="false" aria-label="Écouter un extrait"><svg class="lect" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg><svg class="pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button><div><small>Samba</small><h3>Être libre</h3><div class="ligne-son"><i></i></div></div><a class="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>3 versions</a></li>
+        <li class="piste" data-piste><button class="play" data-play aria-pressed="false" aria-label="Écouter un extrait"><svg class="lect" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg><svg class="pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button><div><small>Java</small><h3>La Java est toujours là</h3><div class="ligne-son"><i></i></div></div><a class="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>2 versions</a></li>
+        <li class="piste" data-piste><button class="play" data-play aria-pressed="false" aria-label="Écouter un extrait"><svg class="lect" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg><svg class="pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button><div><small>Valse</small><h3>Ne laissons pas filer les étoiles</h3><div class="ligne-son"><i></i></div></div><a class="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>2 versions</a></li>
+        <li class="piste" data-piste><button class="play" data-play aria-pressed="false" aria-label="Écouter un extrait"><svg class="lect" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg><svg class="pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button><div><small>Foxtrot</small><h3>Adieu l'Amour Adieu ma Terre</h3><div class="ligne-son"><i></i></div></div><a class="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>2 versions</a></li>
+        <li class="piste" data-piste><button class="play" data-play aria-pressed="false" aria-label="Écouter un extrait"><svg class="lect" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg><svg class="pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button><div><small>Scottish</small><h3>La Scottish est de retour</h3><div class="ligne-son"><i></i></div></div><a class="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>2 versions</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="lettre">
+  <div class="wrap">
+    <span class="sur">Newsletter</span>
+    <h2>Les nouveaux titres, chaque trimestre</h2>
+    <p>Nouvelles partitions, nouvelles bandes orchestre et prochaines dates, directement dans votre boîte mail.</p>
+    <form><label for="m4" style="position:absolute;left:-9999px">Votre adresse e-mail</label><input id="m4" type="email" placeholder="Votre adresse e-mail" required><button type="submit">Je m'inscris</button></form>
+    <small>Désinscription en un clic, dans chaque lettre.</small>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">Damien Poyard</span>
+    <nav aria-label="Pied de page"><a href="#agenda">Agenda</a><a href="#boutique">Boutique</a><a href="#partitions">Partitions et bandes orchestre</a><a href="#">YouTube</a><a href="#">Contact</a><a href="#">Mentions légales</a><a href="#">Gérer mes cookies</a></nav>
+    <p class="bas">Maquette © Sylvain Caron 2026, proposition non contractuelle. Textes, dates, photos et pochettes repris du site actuel.</p>
+  </div>
+</footer>
+<script src="assets/commun.js"></script>
+</body>
+</html>

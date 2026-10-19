@@ -18,3 +18,4 @@
 @media(max-width:900px){.barre-maq .onglets a span{display:none}.barre-maq .onglets a.actif span{display:inline}.barre-maq .mot{display:none}.barre-maq{padding:0 10px;gap:8px}.barre-maq .onglets a{padding:8px 10px}}
 @media(max-width:520px){.barre-maq .fleches{display:none}.barre-maq .retour{padding:9px 10px}}
 .barre-cachee .barre-maq{display:none}
+@media(max-width:520px){.barre-maq .onglets a.actif span{display:none}.barre-maq .onglets a{padding:8px 7px}.barre-maq .onglets{gap:2px}.barre-maq{gap:6px}}
