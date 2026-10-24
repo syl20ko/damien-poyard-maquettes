@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dates, console Pupitre</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="copyright" content="Maquette (c) Sylvain Caron 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/barre.css">
+<style>
+:root{--fond:#f7f5f2;--blanc:#fff;--encre:#1d1a17;--gris:#5f5852;--clair:#756e6b;--trait:#e6e0d8;--trait2:#efebe5;--bord:#7b1f2f;--bord-d:#5c1522;--bord-l:#f3e4e7;
+--ok:#2e7d4f;--ok-l:#e4f1e7;--att:#9a6700;--att-l:#fbf0d2;--ko:#b42318;--ko-l:#f8e1dd;--ombre:0 1px 2px rgba(29,26,23,.06),0 8px 24px -16px rgba(29,26,23,.25);
+--display:'Marcellus',Georgia,serif;--body:'Figtree',system-ui,sans-serif;--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px}
+body{font-family:var(--body);background:var(--fond);color:var(--encre);line-height:1.5;-webkit-font-smoothing:antialiased;isolation:isolate;min-height:100vh}
+a{color:inherit}
+img{display:block;max-width:100%}
+svg{width:18px;height:18px;flex:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2{font-family:var(--display);font-weight:400;line-height:1.1}
+h1{font-size:30px}h2{font-size:20px}
+.sur{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--bord);font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;font-weight:700;font-size:14px;background:var(--encre);color:#fff;text-decoration:none;cursor:pointer;transition:background .2s,transform .2s;white-space:nowrap}
+.btn:hover{background:var(--bord);transform:translateY(-1px)}
+.btn.sec{background:var(--blanc);color:var(--encre);box-shadow:inset 0 0 0 1px var(--trait)}
+.btn.sec:hover{background:var(--trait2);transform:none}
+.btn.prim{background:var(--bord)}.btn.prim:hover{background:var(--bord-d)}
+.btn.petit{padding:7px 12px;font-size:13px}
+.lien{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--bord);text-decoration:none;font-size:14px;cursor:pointer}
+.lien:hover{text-decoration:underline}
+.lien svg{width:16px;height:16px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;background:var(--trait2);color:var(--gris);white-space:nowrap}
+.badge.ok{background:var(--ok-l);color:var(--ok)}.badge.att{background:var(--att-l);color:var(--att)}.badge.ko{background:var(--ko-l);color:var(--ko)}.badge.bord{background:var(--bord-l);color:var(--bord)}
+.badge svg{width:13px;height:13px}
+.carte{background:var(--blanc);border-radius:16px;box-shadow:var(--ombre);padding:22px 24px}
+.carte h2{margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.carte h2 .lien{font-family:var(--body);font-size:13px}
+.champ{display:grid;gap:5px;font-size:13px;color:var(--gris);font-weight:600}
+.champ input,.champ select,.champ textarea{font:inherit;font-size:15px;font-weight:400;color:var(--encre);padding:10px 12px;border:1px solid var(--trait);border-radius:10px;background:var(--blanc);width:100%}
+.champ input:focus,.champ select:focus,.champ textarea:focus{outline:2px solid var(--bord);outline-offset:1px;border-color:var(--bord)}
+.champ .etat{font-weight:400;color:var(--ok);font-size:12px;display:inline-flex;gap:4px;align-items:center}
+.champ .etat svg{width:12px;height:12px}
+.grille-champs{display:grid;gap:14px 16px;grid-template-columns:repeat(12,1fr)}
+.grille-champs>*,.champ input,.champ select,.champ textarea{min-width:0}
+.app,.app>*,.page,.page>*,.deux>*,.matin>*,.bord-c>*,.md>*,.album-c>*,.fiche>*,.album-b>*,.carte{min-width:0}
+.c2{grid-column:span 2}.c3{grid-column:span 3}.c4{grid-column:span 4}.c6{grid-column:span 6}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.interrupteur{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14px;cursor:pointer}
+.interrupteur i{width:40px;height:22px;border-radius:999px;background:var(--trait);position:relative;transition:background .2s}
+.interrupteur i::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .2s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.interrupteur.on i{background:var(--ok)}.interrupteur.on i::after{left:21px}
+.tableau{width:100%;border-collapse:collapse;font-size:14px}
+.tableau th{text-align:left;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--clair);font-weight:700;padding:10px 12px;border-bottom:1px solid var(--trait)}
+.tableau td{padding:12px;border-bottom:1px solid var(--trait2);vertical-align:middle}
+.tableau tr:last-child td{border-bottom:0}
+.tableau tr:hover td{background:#fbf9f6}
+.tableau td.num,.tableau th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tableau-enveloppe{overflow-x:auto}
+.tableau b{font-weight:700}
+.tableau small{display:block;color:var(--clair);font-size:12px}
+.cal{display:inline-grid;place-items:center;width:46px;height:50px;border-radius:10px;background:var(--bord-l);color:var(--bord);line-height:1;flex:none}
+.cal small{font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.cal b{font-family:var(--display);font-size:22px;font-weight:400}
+.chiffres{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.chiffre{background:var(--blanc);border-radius:16px;box-shadow:var(--ombre);padding:18px 20px;display:grid;gap:4px;text-decoration:none;transition:transform .2s}
+.chiffre:hover{transform:translateY(-2px)}
+.chiffre small{font-size:13px;color:var(--gris);font-weight:600}
+.chiffre b{font-family:var(--display);font-size:34px;font-weight:400;line-height:1}
+.chiffre span{font-size:12px;color:var(--clair)}
+.chiffre.alerte b{color:var(--bord)}
+.afaire{display:grid;gap:10px}
+.afaire a{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:12px;background:var(--fond);text-decoration:none;transition:background .2s}
+.afaire a:hover{background:var(--bord-l)}
+.afaire a .p{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--blanc);color:var(--bord);flex:none}
+.afaire a b{display:block;font-size:14px}.afaire a span{font-size:13px;color:var(--gris)}
+.afaire a .fl{margin-left:auto;color:var(--clair)}
+.recherche{display:flex;align-items:center;gap:10px;background:var(--blanc);border:1px solid var(--trait);border-radius:999px;padding:8px 14px;color:var(--clair);font-size:14px}
+.recherche input{border:0;background:none;font:inherit;width:100%;color:var(--encre)}
+.recherche input:focus{outline:0}
+.recherche kbd{font:inherit;font-size:11px;padding:2px 6px;border-radius:6px;border:1px solid var(--trait);color:var(--clair)}
+.filtres{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filtres .f{padding:7px 12px;border-radius:999px;background:var(--blanc);border:1px solid var(--trait);font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.filtres .f.on{background:var(--encre);color:#fff;border-color:var(--encre)}
+.filtres .f svg{width:14px;height:14px}
+.depot{border:2px dashed var(--trait);border-radius:14px;padding:22px;text-align:center;color:var(--gris);font-size:14px;display:grid;gap:6px;justify-items:center;cursor:pointer;transition:border-color .2s,background .2s}
+.depot:hover{border-color:var(--bord);background:var(--bord-l)}
+.depot svg{width:26px;height:26px;color:var(--bord)}
+.depot b{color:var(--encre)}
+.jaquette{border-radius:12px;box-shadow:0 10px 30px -14px rgba(0,0,0,.5);aspect-ratio:1;object-fit:cover;width:100%}
+.piste{display:grid;grid-template-columns:26px 28px 1fr 120px 92px 110px 110px 34px;gap:12px;align-items:center;padding:9px 10px;border-radius:10px;font-size:14px}
+.piste:hover{background:var(--fond)}
+.piste .n{color:var(--clair);font-variant-numeric:tabular-nums;text-align:right}
+.piste .poignee{color:var(--trait);cursor:grab}.piste:hover .poignee{color:var(--clair)}
+.piste input{min-width:0;font:inherit;font-size:14px;border:1px solid transparent;border-radius:8px;padding:6px 8px;background:transparent;width:100%}
+.piste input:hover{border-color:var(--trait)}.piste input:focus{outline:0;border-color:var(--bord);background:var(--blanc)}
+.piste .f{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700}
+.piste .f.oui{color:var(--ok)}.piste .f.non{color:var(--clair)}
+.piste .f svg{width:14px;height:14px}
+.piste .play{width:30px;height:30px;border-radius:50%;background:var(--encre);color:#fff;display:grid;place-items:center}
+.piste .play svg{width:14px;height:14px}
+.piste .play.off{background:var(--trait);color:var(--clair);cursor:default}
+.piste-tete{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--clair);font-weight:700;padding:4px 10px;display:grid;grid-template-columns:26px 28px 1fr 120px 92px 110px 110px 34px;gap:12px}
+.etat-sauv{position:fixed;right:20px;bottom:20px;background:var(--encre);color:#fff;padding:10px 16px;border-radius:999px;font-size:13px;display:flex;align-items:center;gap:8px;box-shadow:var(--ombre);z-index:5}
+.etat-sauv svg{width:14px;height:14px;color:#8fd3a8}
+.note-maq{font-size:12px;color:var(--clair);font-style:italic}
+:focus-visible{outline:3px solid var(--bord);outline-offset:2px}
+@media(max-width:1000px){.chiffres{grid-template-columns:repeat(2,1fr)}div[style*='grid-template-columns:1fr 1fr']{grid-template-columns:1fr!important}}
+@media(max-width:900px){.tableau{display:block;overflow-x:auto;white-space:nowrap}}
+@media(max-width:700px){.piste,.piste-tete{grid-template-columns:26px 1fr 34px 110px!important}.piste>:nth-child(1),.piste>:nth-child(4),.piste>:nth-child(7),.piste>:nth-child(8),.piste-tete>:nth-child(1),.piste-tete>:nth-child(4),.piste-tete>:nth-child(7),.piste-tete>:nth-child(8){display:none}.piste-tete>:nth-child(5){visibility:hidden}.tableau small{white-space:normal}.etat-sauv{right:12px;bottom:12px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+.lat{background:var(--encre);color:#d9d2ca;padding:22px 16px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh}
+.lat .marque{color:#fff;padding:6px 10px 20px;display:grid;gap:2px}
+.lat .marque b{font-family:var(--display);font-weight:400;font-size:20px}
+.lat .marque span{font-size:12px;color:#a69e95}
+.lat a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;transition:background .15s,color .15s}
+.lat a:hover{background:rgba(255,255,255,.07);color:#fff}
+.lat a.on{background:var(--bord);color:#fff}
+.lat a .n{margin-left:auto;font-size:11px;background:rgba(255,255,255,.15);padding:2px 7px;border-radius:999px}
+.lat .sep{height:1px;background:rgba(255,255,255,.1);margin:10px 4px}
+.lat .bas{margin-top:auto;display:grid;gap:4px}
+.lat .bas a{font-size:13px;color:#a69e95}
+.haut{display:flex;align-items:center;gap:16px;padding:14px 32px;background:var(--blanc);border-bottom:1px solid var(--trait);position:sticky;top:0;z-index:4}
+.haut .recherche{width:380px}
+.haut .droite{margin-left:auto;display:flex;align-items:center;gap:10px}
+.haut .qui{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gris)}
+.haut .qui i{width:32px;height:32px;border-radius:50%;background:var(--bord);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:13px}
+.page{padding:28px 32px 80px;display:grid;gap:22px;max-width:1360px}
+.tete{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.tete h1{margin-top:6px}
+.tete .actions{display:flex;gap:8px;flex-wrap:wrap}
+.deux{display:grid;grid-template-columns:1.6fr 1fr;gap:22px;align-items:start}
+.sommaire{position:sticky;top:90px;display:grid;gap:4px;font-size:14px}
+.sommaire a{padding:8px 12px;border-left:2px solid var(--trait);text-decoration:none;color:var(--gris)}
+.sommaire a.on{border-color:var(--bord);color:var(--encre);font-weight:700}
+.fiche{display:grid;grid-template-columns:1fr 200px;gap:28px;align-items:start}
+.fiche .carte{margin-bottom:18px}
+.apercu-site{background:var(--fond);border-radius:12px;padding:16px;display:flex;gap:14px;align-items:center;font-size:14px}
+.apercu-site em{font-style:normal;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--bord);font-weight:700;display:block}
+.album-tete{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:start}
+.album-tete .infos{display:grid;gap:12px}
+.formats{display:flex;gap:12px;flex-wrap:wrap}
+.formats .fm{display:grid;gap:2px;padding:12px 16px;border-radius:12px;background:var(--fond);min-width:150px}
+.formats .fm small{font-size:12px;color:var(--gris);font-weight:600}
+.formats .fm b{font-size:18px}
+.formats .fm span{font-size:12px;color:var(--clair)}
+@media(max-width:1100px){.app{grid-template-columns:1fr}.lat{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:12px}.lat .marque{padding:6px 10px}.lat .bas{margin:0}.deux,.fiche{grid-template-columns:1fr}.sommaire{display:none}.haut .recherche{width:auto;flex:1}}
+@media(max-width:700px){.lat{flex-wrap:nowrap;overflow-x:auto;gap:2px;padding:10px 8px}.lat .marque{display:none}.lat .sep{display:none}.lat a{white-space:nowrap;padding:8px 10px}.lat .bas{display:contents}.haut{padding:10px 16px;gap:10px}.haut .droite .btn span{display:none}.haut .qui{display:none}.page{padding:18px 16px 80px}.album-tete{grid-template-columns:1fr}.grille-champs > *{grid-column:span 12}}
+</style>
+</head>
+<body>
+<div class="barre-maq" role="navigation" aria-label="Navigation entre les maquettes"><a class="retour" href="index.html">&#8592; <span class="mot">Les 3 consoles</span></a><div class="onglets"><a href="a-bord.html" class="actif"><b>1</b> <span>Pupitre</span></a><a href="b-bord.html"><b>2</b> <span>Carnet</span></a><a href="c-bord.html"><b>3</b> <span>Scène</span></a></div><div class="fleches"><a href="c-bord.html" aria-label="Maquette précédente">&#8249;</a><a href="b-bord.html" aria-label="Maquette suivante">&#8250;</a></div></div>
+<div class="app"><aside class="lat"><div class="marque"><b>Damien Poyard</b><span>Console du site</span></div><a href="a-bord.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Tableau de bord</span></a><a href="a-dates.html" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M16 3v4M8 3v4M3 11h18"/></svg><span>Dates</span><span class="n">37</span></a><a href="a-album.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/></svg><span>Albums</span></a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg><span>Partitions</span></a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg><span>Commandes</span><span class="n">3</span></a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Pages et menus</span></a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span>SEO</span></a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span>Sauvegardes</span></a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Réglages</span></a><div class="sep"></div><div class="bas"><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg><span>Voir le site</span></a><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg><span>Déconnexion</span></a></div></aside><div><header class="haut"><label class="recherche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input type="search" placeholder="Rechercher une date, un titre, une commande"><kbd>⌘K</kbd></label><div class="droite"><a class="btn petit prim" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Ajouter une date</span></a><span class="qui"><i>DP</i>Damien</span></div></header><main class="page"><div class="tete"><div><span class="sur">Agenda</span><h1>Dates</h1></div><div class="actions"><a class="btn sec" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M16 3v4M8 3v4M3 11h18"/></svg> Calendrier</a><a class="btn prim" href="a-date.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Ajouter une date</a></div></div><div class="filtres"><span class="f on">À venir <b>37</b></span><span class="f">Passées</span><span class="f">Brouillons <b>1</b></span><span style="width:12px"></span><span class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M16 3v4M8 3v4M3 11h18"/></svg> Novembre 2026</span><span class="f">Saône-et-Loire (71)</span><span class="f">Sans affiche <b>35</b></span></div><div class="carte" style="padding:8px 10px"><table class="tableau"><thead><tr><th></th><th>Date et ville</th><th>Lieu</th><th>Horaire</th><th>État</th><th>Affiche</th><th></th></tr></thead><tbody><tr><td><span class="cal"><small>Dim</small><b>25</b></span></td><td><b><a href="a-date.html" style="text-decoration:none">Abbeville</a></b> (80)<small>octobre 2026</small></td><td>Théâtre Municipal</td><td>à partir de 14h30</td><td><span class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Visible</span></td><td><span class="badge bord">Affiche</span></td><td><span style="display:flex;gap:4px"><a class="btn sec petit" href="a-date.html">Modifier</a><a class="btn sec petit" href="#" title="Dupliquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></a></span></td></tr><tr><td><span class="cal"><small>Dim</small><b>1</b></span></td><td><b><a href="a-date.html" style="text-decoration:none">St Germain du Bois</a></b> (71)<small>novembre 2026</small></td><td>Salle des fêtes</td><td>de 14h30 à 19h00</td><td><span class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Visible</span></td><td><span class="badge">Sans affiche</span></td><td><span style="display:flex;gap:4px"><a class="btn sec petit" href="a-date.html">Modifier</a><a class="btn sec petit" href="#" title="Dupliquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></a></span></td></tr><tr><td><span class="cal"><small>Lun</small><b>2</b></span></td><td><b><a href="a-date.html" style="text-decoration:none">Portes-lès-Valence</a></b> (26)<small>novembre 2026</small></td><td>Zone Commerciale Nationale 7</td><td>de 14h30 à 19h00</td><td><span class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Visible</span></td><td><span class="badge">Sans affiche</span></td><td><span style="display:flex;gap:4px"><a class="btn sec petit" href="a-date.html">Modifier</a><a class="btn sec petit" href="#" title="Dupliquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></a></span></td></tr><tr><td><span class="cal"><small>Jeu</small><b>5</b></span></td><td><b><a href="a-date.html" style="text-decoration:none">Beffes</a></b> (18)<small>novembre 2026</small></td><td>Avec Christophe Demerson</td><td>Horaire à préciser</td><td><span class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Visible</span></td><td><span class="badge">Sans affiche</span></td><td><span style="display:flex;gap:4px"><a class="btn sec petit" href="a-date.html">Modifier</a><a class="btn sec petit" href="#" title="Dupliquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></a></span></td></tr><tr><td><span class="cal"><small>Sam</small><b>7</b></span></td><td><b><a href="a-date.html" style="text-decoration:none">Autun</a></b> (71)<small>novembre 2026</small></td><td>Stage de danse en ligne</td><td>de 15h00 à 18h30</td><td><span class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Visible</span></td><td><span class="badge">Sans affiche</span></td><td><span style="display:flex;gap:4px"><a class="btn sec petit" href="a-date.html">Modifier</a><a class="btn sec petit" href="#" title="Dupliquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></a></span></td></tr><tr><td><span class="cal"><small>Dim</small><b>8</b></span></td><td><b><a href="a-date.html" style="text-decoration:none">Le Looping</a></b> (71)<small>novembre 2026</small></td><td>Lieu à préciser</td><td>à partir de 14h30</td><td><span class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Visible</span></td><td><span class="badge">Sans affiche</span></td><td><span style="display:flex;gap:4px"><a class="btn sec petit" href="a-date.html">Modifier</a><a class="btn sec petit" href="#" title="Dupliquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></a></span></td></tr><tr><td><span class="cal"><small>Mer</small><b>11</b></span></td><td><b><a href="a-date.html" style="text-decoration:none">Paray-le-Monial</a></b> (71)<small>novembre 2026</small></td><td>Centre culturel et de congrès</td><td>de 14h30 à 19h00</td><td><span class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Visible</span></td><td><span class="badge">Sans affiche</span></td><td><span style="display:flex;gap:4px"><a class="btn sec petit" href="a-date.html">Modifier</a><a class="btn sec petit" href="#" title="Dupliquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></a></span></td></tr><tr><td><span class="cal"><small>Jeu</small><b>12</b></span></td><td><b><a href="a-date.html" style="text-decoration:none">Selongey</a></b> (21)<small>novembre 2026</small></td><td>Salle des Fêtes Frédéric Lescure</td><td>de 14h15 à 19h00</td><td><span class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Visible</span></td><td><span class="badge">Sans affiche</span></td><td><span style="display:flex;gap:4px"><a class="btn sec petit" href="a-date.html">Modifier</a><a class="btn sec petit" href="#" title="Dupliquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></a></span></td></tr><tr><td><span class="cal"><small>Sam</small><b>14</b></span></td><td><b><a href="a-date.html" style="text-decoration:none">St Just La Pendue</a></b> (42)<small>novembre 2026</small></td><td>Salle des fêtes</td><td>de 14h30 à 19h00</td><td><span class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Visible</span></td><td><span class="badge">Sans affiche</span></td><td><span style="display:flex;gap:4px"><a class="btn sec petit" href="a-date.html">Modifier</a><a class="btn sec petit" href="#" title="Dupliquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></a></span></td></tr><tr><td><span class="cal"><small>Dim</small><b>15</b></span></td><td><b><a href="a-date.html" style="text-decoration:none">Labergement-lès-Seurre</a></b> (21)<small>novembre 2026</small></td><td>Lieu à préciser</td><td>de 14h15 à 19h00</td><td><span class="badge att">Brouillon</span></td><td><span class="badge">Sans affiche</span></td><td><span style="display:flex;gap:4px"><a class="btn sec petit" href="a-date.html">Modifier</a><a class="btn sec petit" href="#" title="Dupliquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></a></span></td></tr></tbody></table></div><p class="note-maq">10 dates affichées sur 37, les suivantes se chargent en faisant défiler.</p></main></div></div><div class="etat-sauv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Enregistré à l'instant</div>
+<script>if(location.search.indexOf('nobar')>-1)document.body.classList.add('barre-cachee');</script>
+</body>
+</html>

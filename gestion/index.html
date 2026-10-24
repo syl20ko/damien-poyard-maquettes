@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damien Poyard, la console de gestion, 3 visuels</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="copyright" content="Maquettes (c) Sylvain Caron 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--fond:#f7f5f2;--encre:#1d1a17;--gris:#5f5852;--bord:#7b1f2f;--trait:#e6e0d8;--display:'Marcellus',Georgia,serif;--body:'Figtree',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--fond);color:var(--encre);line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+h1,h2{font-family:var(--display);font-weight:400;line-height:1.1}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.top{background:var(--encre);color:#fff;padding:56px 0 72px;position:relative;overflow:hidden}
+.top::before{content:"";position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(123,31,47,.55),transparent 60%);right:-240px;top:-380px}
+.top .wrap{position:relative}
+.top .sur{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#e3c9ce;font-weight:700}
+.top h1{font-size:clamp(36px,5vw,60px);margin:12px 0 18px;max-width:18ch}
+.top p{font-size:18px;color:#cfc7bf;max-width:60ch}
+.top .ecrans{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.top .ecrans span{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);font-size:14px;font-weight:600}
+.liste{display:grid;gap:36px;padding:48px 0 80px}
+.maq{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center;background:#fff;border-radius:24px;padding:28px;box-shadow:0 1px 2px rgba(29,26,23,.06),0 20px 50px -30px rgba(29,26,23,.35);position:relative}
+.maq .num{position:absolute;top:-16px;left:28px;width:44px;height:44px;border-radius:50%;background:var(--bord);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:22px}
+.maq .visuel{display:block;border-radius:14px;overflow:hidden;box-shadow:0 14px 40px -20px rgba(0,0,0,.5);transition:transform .25s}
+.maq .visuel:hover{transform:translateY(-4px)}
+.maq .chrome{display:flex;gap:6px;padding:8px 12px;background:#ece7e0}
+.maq .chrome i{width:10px;height:10px;border-radius:50%;background:#c9c1b7}
+.maq h2{font-size:34px;margin-bottom:10px}
+.maq p{color:var(--gris);font-size:17px;margin-bottom:18px}
+.maq .liens{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.maq .liens a{padding:6px 12px;border-radius:999px;border:1px solid var(--trait);font-size:13px;font-weight:600;text-decoration:none;color:var(--gris)}
+.maq .liens a:hover{border-color:var(--bord);color:var(--bord)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:700;background:var(--encre);color:#fff;text-decoration:none;transition:background .2s}
+.btn:hover{background:var(--bord)}
+.btn svg{width:18px;height:18px}
+.commun{padding:0 0 80px}
+.commun h2{font-size:30px;margin-bottom:16px}
+.commun ul{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none}
+.commun li{background:#fff;border-radius:16px;padding:18px 20px;font-size:15px;color:var(--gris)}
+.commun li b{display:block;color:var(--encre);margin-bottom:4px;font-size:16px}
+footer{padding:24px 0 40px;font-size:13px;color:var(--gris)}
+@media(max-width:900px){.maq{grid-template-columns:1fr}.commun ul{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><span class="sur">Damien Poyard, refonte du site</span><h1>La console de gestion, trois visuels</h1>
+<p>Même contenu, mêmes données réelles (dates de novembre, Vol. 23, dernières commandes), trois façons de s'organiser. Chaque console montre le tableau de bord, les dates et un album. Le reste (partitions, commandes, pages et menus, SEO, sauvegardes) reprendra la composition choisie.</p>
+<div class="ecrans"><span>Tableau de bord</span><span>Dates</span><span>Fiche d'une date</span><span>Album et pistes</span></div></div></header>
+<main class="wrap"><div class="liste"><article class="maq"><div class="num">1</div><a class="visuel" href="a-bord.html"><div class="chrome"><i></i><i></i><i></i></div><img src="apercus/a-bord.webp" alt="Aperçu de la console Pupitre" width="1000" height="722"></a><div class="texte"><h2>Pupitre</h2><p>Barre latérale sombre, tableaux denses, fiche sur une page entière avec sommaire.</p><div class="liens"><a href="a-bord.html">Tableau de bord</a><a href="a-dates.html">Dates</a><a href="a-date.html">Fiche d'une date</a><a href="a-album.html">Album</a></div><a class="btn" href="a-bord.html">Ouvrir la console 1 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article><article class="maq"><div class="num">2</div><a class="visuel" href="b-bord.html"><div class="chrome"><i></i><i></i><i></i></div><img src="apercus/b-bord.webp" alt="Aperçu de la console Carnet" width="1000" height="722"></a><div class="texte"><h2>Carnet</h2><p>Navigation claire, cartes groupées par mois, la fiche s&#x27;ouvre en panneau sur le côté.</p><div class="liens"><a href="b-bord.html">Tableau de bord</a><a href="b-dates.html">Dates</a><a href="b-album.html">Album</a></div><a class="btn" href="b-bord.html">Ouvrir la console 2 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article><article class="maq"><div class="num">3</div><a class="visuel" href="c-bord.html"><div class="chrome"><i></i><i></i><i></i></div><img src="apercus/c-bord.webp" alt="Aperçu de la console Scène" width="1000" height="722"></a><div class="texte"><h2>Scène</h2><p>Bandeau bordeaux à onglets, liste et fiche côte à côte, calendrier au centre du tableau de bord.</p><div class="liens"><a href="c-bord.html">Tableau de bord</a><a href="c-dates.html">Dates</a><a href="c-album.html">Album</a></div><a class="btn" href="c-bord.html">Ouvrir la console 3 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article></div>
+<section class="commun"><h2>Dans les trois, d'office</h2><ul>
+<li><b>Enregistrement automatique</b>Chaque champ part au serveur quand on le quitte, un signal discret le confirme en bas à droite.</li>
+<li><b>Dates et heures en français</b>Dimanche 25 octobre 2026, 14h30. Plus de 10/25/2026 02:30 PM.</li>
+<li><b>Ce qu'il reste à faire</b>Affiches manquantes, MP3 à charger, commandes à poster : visibles dès l'ouverture.</li>
+<li><b>Aperçu « tel que sur le site »</b>La ligne de l'agenda ou la fiche album telle que le public la verra.</li>
+<li><b>MP3 par lot</b>Douze fichiers glissés d'un coup, numéros et titres lus dedans, extraits fabriqués tout seuls.</li>
+<li><b>Recherche partout</b>Une date, un titre, une commande, depuis n'importe quel écran.</li>
+</ul></section></main>
+<footer class="wrap">Maquettes (c) Sylvain Caron 2026. Pages statiques. Les données viennent du site (agenda public, catalogue), aucune donnée personnelle.</footer>
+</body>
+</html>
