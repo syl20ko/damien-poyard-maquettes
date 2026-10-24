@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damien Poyard, les pages du site, visuel Portrait</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="copyright" content="Maquettes (c) Sylvain Caron 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--nuit:#1b1d33;--or:#a9bcff;--rouge:#c8342b;--creme:#f7f1e6;--blanc:#fff;--encre:#1c1a17;--gris:#5e5a52;--trait:#e4dccb;--display:'DM Serif Display',Georgia,serif;--body:'Figtree',system-ui,sans-serif;--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:var(--body);background:var(--creme);color:var(--encre);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--or);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.4rem;border-radius:999px;font-weight:800;text-decoration:none;transition:transform .2s,box-shadow .2s;background:var(--nuit);color:#fff;cursor:pointer}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(27,29,51,.6)}
+.btn svg{width:18px;height:18px}
+.top{background:var(--nuit);color:#fff;position:relative;overflow:hidden}
+.top::before{content:"";position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(120,150,255,.28),transparent 60%);right:-280px;top:-420px}
+.top .wrap{position:relative;padding:28px 0 64px}
+.top .ligne{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:48px}
+.top .logo img{height:44px;width:auto}
+.top .qui{font-size:15px;color:#b9bbd3;text-align:right}
+.top .qui b{color:#fff;display:block}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--or);margin-bottom:16px}
+.kicker i{width:30px;height:2px;background:var(--or)}
+.top h1{font-size:clamp(38px,5vw,60px);max-width:16ch}
+.top h1 em{font-style:italic;color:var(--or)}
+.top .lead{color:#d7d8e8;font-size:18px;max-width:54ch;margin:20px 0 28px}
+.top .lead a{color:#fff}
+.sommaire{display:flex;gap:10px;flex-wrap:wrap}
+.sommaire a{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);text-decoration:none;font-weight:700;padding:8px 16px 8px 8px;border-radius:999px;transition:background .2s}
+.sommaire a:hover{background:rgba(255,255,255,.18)}
+.sommaire b{width:30px;height:30px;border-radius:50%;background:var(--or);color:var(--nuit);display:grid;place-items:center;font-family:var(--display);font-weight:400}
+.eventail{position:relative;height:400px}
+.eventail figure{position:absolute;width:58%;height:78%;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15);background:#fff;transition:transform .4s}
+.eventail img{width:100%;height:100%;object-fit:cover;object-position:top}
+.eventail .e1{left:0;top:8%;transform:rotate(-6deg)}
+.eventail .e2{left:21%;top:0;transform:rotate(1deg);z-index:2}
+.eventail .e3{right:0;top:12%;transform:rotate(7deg)}
+.eventail figure:hover{transform:rotate(0) scale(1.04);z-index:5}
+.eventail figcaption{position:absolute;left:12px;bottom:10px;background:var(--nuit);color:#fff;font-size:13px;font-weight:800;padding:4px 12px;border-radius:999px}
+
+.demandes{padding:64px 0 16px}
+.demandes h2,.choix h2{font-size:clamp(30px,3.4vw,42px)}
+.demandes .intro,.choix .intro{color:var(--gris);max-width:64ch;margin:8px 0 32px}
+.coches{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.coche{background:var(--blanc);border-radius:14px;padding:18px 20px;box-shadow:0 20px 50px -30px rgba(27,29,51,.35);display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+.coche svg{width:26px;height:26px;color:#1d8a52;flex:none}
+.coche b{display:block;font-size:16px;margin-bottom:2px}
+.coche span{font-size:15px;color:var(--gris)}
+.coche.attente svg{color:var(--rouge)}
+
+.choix{padding:56px 0 24px}
+.panneau{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center;background:var(--blanc);border-radius:var(--r);padding:36px;margin-bottom:32px;box-shadow:0 20px 50px -30px rgba(27,29,51,.4)}
+.panneau:nth-child(even){grid-template-columns:.75fr 1.25fr}
+.panneau:nth-child(even) .txt{order:-1}
+.ecrans{position:relative;padding-bottom:40px}
+.ecrans .desk{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--trait);box-shadow:0 24px 50px -24px rgba(27,29,51,.55);background:#fff}
+.ecrans .chrome{height:28px;background:#eceae4;display:flex;align-items:center;gap:6px;padding:0 10px}
+.ecrans .chrome i{width:9px;height:9px;border-radius:50%;background:#cfcabd}
+.ecrans .desk img{aspect-ratio:1440/1040;object-fit:cover;object-position:top;width:100%}
+.ecrans .mob{position:absolute;right:-8px;bottom:0;width:26%;border-radius:18px;border:6px solid var(--nuit);overflow:hidden;box-shadow:0 20px 40px -18px rgba(27,29,51,.6);background:#fff;transition:transform .3s}
+.ecrans .mob img{aspect-ratio:390/792;object-fit:cover;object-position:top;width:100%}
+.panneau:hover .mob{transform:translateY(-8px) rotate(-2deg)}
+.num{display:block;font-family:var(--display);font-size:68px;line-height:1;color:transparent;-webkit-text-stroke:2px var(--rouge);margin-bottom:8px}
+.tag{display:block;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--rouge);margin-bottom:6px}
+.txt h3{font-size:34px;margin-bottom:10px}
+.txt p{color:var(--gris)}
+.txt ul{list-style:none;margin:18px 0 24px;display:grid;gap:8px}
+.txt li{display:flex;gap:10px;font-weight:700;font-size:16px}
+.txt li svg{width:20px;height:20px;color:var(--rouge);flex:none;margin-top:3px}
+
+.questions{padding:32px 0 64px}
+.boite{background:var(--nuit);color:#fff;border-radius:var(--r);padding:40px;display:grid;grid-template-columns:1fr 1.4fr;gap:48px}
+.boite h2{font-size:clamp(28px,3vw,36px)}
+.boite > div > p{color:#cfd1e4;margin-top:12px}
+.tuiles{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tuile{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px}
+.tuile svg{width:26px;height:26px;color:var(--or);margin-bottom:10px}
+.tuile b{display:block;font-family:var(--display);font-weight:400;font-size:19px;margin-bottom:4px}
+.tuile span{font-size:15px;color:#cfd1e4}
+
+footer{padding:0 0 40px;font-size:14px;color:var(--gris)}
+footer .wrap{border-top:1px solid var(--trait);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(max-width:1024px){.hero,.panneau,.panneau:nth-child(even),.boite{grid-template-columns:1fr}.panneau:nth-child(even) .txt{order:0}.eventail{height:340px}.coches{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.top .wrap{padding:20px 0 48px}.top .ligne{margin-bottom:32px}.top .qui{text-align:left}.eventail{height:230px}.panneau{padding:20px}.num{font-size:48px}.txt h3{font-size:28px}.boite{padding:24px}.tuiles,.coches{grid-template-columns:1fr}.ecrans .mob{width:32%}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="ligne">
+      <span class="logo"><img src="../assets/img/live/logo-dp-ligne-clair.png" alt="Damien Poyard, auteur compositeur interprète" width="1363" height="245"></span>
+      <p class="qui"><b>Refonte du site damien-poyard.fr</b>Proposition de Sylvain Caron, 24 octobre 2026</p>
+    </div>
+    <div class="hero">
+      <div>
+        <span class="kicker"><i></i>Visuel Portrait retenu</span>
+        <h1>Les sept pages du site, <em>habillées</em> à votre façon</h1>
+        <p class="lead">Vous avez choisi le visuel Portrait et demandé des ajustements. Les voici appliqués sur l'accueil, puis déclinés sur les pages que l'on ne voyait pas encore : l'agenda, la boutique, un album, le catalogue des partitions, une danse et un titre. Tout est repris de votre site actuel, dates, pochettes, titres. <a href="../photos-live/index.html">Revoir les 7 visuels</a>.</p>
+        <div class="sommaire"><a href="#p1"><b>1</b>Accueil</a><a href="#p2"><b>2</b>Agenda</a><a href="#p3"><b>3</b>Boutique</a><a href="#p4"><b>4</b>Album</a><a href="#p5"><b>5</b>Partitions</a><a href="#p6"><b>6</b>Valses</a><a href="#p7"><b>7</b>Titre</a></div>
+      </div>
+      <div class="eventail" aria-hidden="true">
+        <figure class="e1"><img src="apercus/agenda.webp" alt=""><figcaption>2 · Agenda</figcaption></figure>
+        <figure class="e2"><img src="apercus/accueil.webp" alt=""><figcaption>1 · Accueil</figcaption></figure>
+        <figure class="e3"><img src="apercus/partitions.webp" alt=""><figcaption>5 · Partitions</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="demandes">
+  <div class="wrap">
+    <h2>Ce que vous avez demandé, ce qui est fait</h2>
+    <p class="intro">Point par point, d'après votre message du 24 octobre.</p>
+    <div class="coches">
+      <div class="coche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><div><b>Votre nouvelle photo d'accueil</b><span>La photo sur fond clair remplace la photo de scène.</span></div></div>
+      <div class="coche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><div><b>« Auteur compositeur interprète »</b><span>Au-dessus de votre nom, à la place de « Chanteur accordéoniste », qui passe sous le nom.</span></div></div>
+      <div class="coche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><div><b>Votre nom plus droit, plus épais</b><span>La lettre du visuel Prestige, en plus gras.</span></div></div>
+      <div class="coche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><div><b>Trois vignettes sobres</b><span>Des pictogrammes à la place des photos. Agenda : « Nos prochains rendez-vous ».</span></div></div>
+      <div class="coche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><div><b>Agenda sans photos</b><span>La liste du visuel Pupitre, avec les couleurs de Portrait, et la prochaine date dès l'accueil.</span></div></div>
+      <div class="coche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><div><b>CD détourés</b><span>Seule la jaquette est montrée, plus de boîtier, sur toutes les pages.</span></div></div>
+      <div class="coche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><div><b>Les titres de l'album à l'unité</b><span>Chaque piste a son extrait et son bouton « Acheter ce titre ».</span></div></div>
+      <div class="coche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><div><b>Partitions en trois étapes</b><span>Les danses en vignettes, puis les titres, puis la fiche avec ce qui se télécharge.</span></div></div>
+      <div class="coche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><div><b>Texte de la newsletter</b><span>« Inscrivez-vous pour recevoir les infos, les dates, les albums, les partitions et les bandes orchestre. »</span></div></div>
+    </div>
+  </div>
+</section>
+
+<main class="choix">
+  <div class="wrap">
+    <h2>Les sept pages</h2>
+    <p class="intro">Chaque page s'ouvre dans le navigateur, sur ordinateur et sur téléphone. Les boutons d'écoute réagissent au clic, sans son pour l'instant. La barre jaune en haut permet de passer d'une page à l'autre ou de revenir ici.</p>
+
+    <article class="panneau" id="p1">
+      <div class="ecrans"><a class="desk" href="accueil.html"><div class="chrome"><i></i><i></i><i></i></div><img src="apercus/accueil.webp" alt="Aperçu de l'accueil sur ordinateur" width="1000" height="722"></a><a class="mob" href="accueil.html"><img src="apercus/accueil-mobile.webp" alt="Aperçu de l'accueil sur téléphone" width="390" height="792"></a></div>
+      <div class="txt">
+        <span class="num">01</span><span class="tag">Page 1</span>
+        <h3>Accueil</h3>
+        <p>Le visuel Portrait avec vos retouches : nouvelle photo, nom en lettres épaisses, trois pictogrammes, agenda en liste, jaquettes à plat, nouveau texte de newsletter.</p>
+        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Prochain rendez-vous posé sur la photo</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Six dates à venir, puis le nouvel album</li></ul>
+        <a class="btn" href="accueil.html">Ouvrir la page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="panneau" id="p2">
+      <div class="ecrans"><a class="desk" href="agenda.html"><div class="chrome"><i></i><i></i><i></i></div><img src="apercus/agenda.webp" alt="Aperçu de l'agenda sur ordinateur" width="1000" height="722"></a><a class="mob" href="agenda.html"><img src="apercus/agenda-mobile.webp" alt="Aperçu de l'agenda sur téléphone" width="390" height="792"></a></div>
+      <div class="txt">
+        <span class="num">02</span><span class="tag">Page 2</span>
+        <h3>Agenda</h3>
+        <p>Vos 37 prochaines dates, mois par mois, sans photo. Lieu, horaires, numéro de l'organisateur à appeler d'un clic sur téléphone, affiche quand il y en a une.</p>
+        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Raccourcis vers chaque mois</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>« Vous organisez un bal ? » et inscription aux dates par mail</li></ul>
+        <a class="btn" href="agenda.html">Ouvrir la page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="panneau" id="p3">
+      <div class="ecrans"><a class="desk" href="boutique.html"><div class="chrome"><i></i><i></i><i></i></div><img src="apercus/boutique.webp" alt="Aperçu de la boutique sur ordinateur" width="1000" height="722"></a><a class="mob" href="boutique.html"><img src="apercus/boutique-mobile.webp" alt="Aperçu de la boutique sur téléphone" width="390" height="792"></a></div>
+      <div class="txt">
+        <span class="num">03</span><span class="tag">Page 3</span>
+        <h3>Boutique</h3>
+        <p>Le nouvel album en vedette, puis vos onze albums en jaquettes détourées, avec les prix CD et clé USB. Le bon de commande pour le chèque reste à portée.</p>
+        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Albums sans format en vente : « Extraits à écouter »</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Trois rappels : envoi par La Poste, titre à l'unité, carte ou chèque</li></ul>
+        <a class="btn" href="boutique.html">Ouvrir la page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="panneau" id="p4">
+      <div class="ecrans"><a class="desk" href="album.html"><div class="chrome"><i></i><i></i><i></i></div><img src="apercus/album.webp" alt="Aperçu de la fiche album sur ordinateur" width="1000" height="722"></a><a class="mob" href="album.html"><img src="apercus/album-mobile.webp" alt="Aperçu de la fiche album sur téléphone" width="390" height="792"></a></div>
+      <div class="txt">
+        <span class="num">04</span><span class="tag">Page 4</span>
+        <h3>Album, volume 23</h3>
+        <p>La jaquette, les deux formats à ajouter au panier, et les 19 titres avec leur danse, leur extrait et un bouton « Acheter ce titre ».</p>
+        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Les titres qui ont une partition renvoient vers leur fiche</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Les autres albums en bas de page</li></ul>
+        <a class="btn" href="album.html">Ouvrir la page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="panneau" id="p5">
+      <div class="ecrans"><a class="desk" href="partitions.html"><div class="chrome"><i></i><i></i><i></i></div><img src="apercus/partitions.webp" alt="Aperçu des partitions sur ordinateur" width="1000" height="722"></a><a class="mob" href="partitions.html"><img src="apercus/partitions-mobile.webp" alt="Aperçu des partitions sur téléphone" width="390" height="792"></a></div>
+      <div class="txt">
+        <span class="num">05</span><span class="tag">Page 5</span>
+        <h3>Partitions et bandes orchestre</h3>
+        <p>Vos 33 danses en vignettes, de la valse viennoise à la scottish, avec le nombre de titres. Une recherche par titre ou par danse, et les derniers ajouts en bas.</p>
+        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Même ordre que sur votre site actuel</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>La phrase SACEM reprise mot pour mot</li></ul>
+        <a class="btn" href="partitions.html">Ouvrir la page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="panneau" id="p6">
+      <div class="ecrans"><a class="desk" href="famille.html"><div class="chrome"><i></i><i></i><i></i></div><img src="apercus/famille.webp" alt="Aperçu de la page des valses sur ordinateur" width="1000" height="722"></a><a class="mob" href="famille.html"><img src="apercus/famille-mobile.webp" alt="Aperçu de la page des valses sur téléphone" width="390" height="792"></a></div>
+      <div class="txt">
+        <span class="num">06</span><span class="tag">Page 6</span>
+        <h3>Une danse : les valses</h3>
+        <p>Les 25 valses en cartes, avec l'extrait à écouter d'un clic et ce qui existe pour chacune : partition, bande orchestre.</p>
+        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Tri A à Z, plus récents, avec chœurs</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Changer de danse sans remonter</li></ul>
+        <a class="btn" href="famille.html">Ouvrir la page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="panneau" id="p7">
+      <div class="ecrans"><a class="desk" href="titre.html"><div class="chrome"><i></i><i></i><i></i></div><img src="apercus/titre.webp" alt="Aperçu de la fiche titre sur ordinateur" width="1000" height="722"></a><a class="mob" href="titre.html"><img src="apercus/titre-mobile.webp" alt="Aperçu de la fiche titre sur téléphone" width="390" height="792"></a></div>
+      <div class="txt">
+        <span class="num">07</span><span class="tag">Page 7</span>
+        <h3>Un titre : Être libre</h3>
+        <p>Ce qui se télécharge : la partition en PDF, la bande orchestre avec chœurs et sans chœurs en MP3, chacune avec son extrait et son bouton. Le lien vers l'album où figure le titre.</p>
+        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>« Comment ça marche » en trois lignes</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Les autres titres de la même danse</li></ul>
+        <a class="btn" href="titre.html">Ouvrir la page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<section class="questions">
+  <div class="wrap">
+    <div class="boite">
+      <div>
+        <h2>Quatre points à confirmer</h2>
+        <p>Rien n'est figé. Dites-nous ce qui vous convient et ce qu'il faut changer, page par page.</p>
+      </div>
+      <div class="tuiles">
+        <div class="tuile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg><b>Le prix d'un titre à l'unité</b><span>Le bouton « Acheter ce titre » est en place, il attend votre prix.</span></div>
+        <div class="tuile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m3 15 5-5 4 4 3-3 6 6"/></svg><b>Les jaquettes à plat</b><span>Elles sont découpées à partir des images actuelles. Vos fichiers d'origine donneront un rendu plus net.</span></div>
+        <div class="tuile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V6l11-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg><b>Le nom des versions sur la fiche titre</b><span>Ici « Bande orchestre avec chœurs » et « sans chœurs ». À confirmer avec le mot que vous souhaitez à cet endroit.</span></div>
+        <div class="tuile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 9 8 5 8-5"/></svg><b>La photo de la newsletter</b><span>Gardée telle quelle, l'ombre sur la chemise peut être retravaillée ensuite.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>Maquettes © Sylvain Caron 2026</span><span>Textes, dates, photos et pochettes : Damien Poyard</span></div></footer>
+</body>
+</html>
