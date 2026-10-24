@@ -515,7 +515,7 @@ def titre():
     def variation(ico, libelle, meta, extrait, bouton):
         ext = ('<div class="extrait">%s<span>Extrait, 30 secondes</span><div class="ligne-son"><i></i></div></div>' % PLAY) if extrait else '<div class="extrait apercu">%s<span>Aperçu de la première page</span></div>' % ICO_FILE
         return '<li class="variation" data-piste><div class="v-tete"><span class="v-ico">%s</span><div><h2>%s</h2><small>%s</small></div></div>%s<a class="bouton" href="#">%s%s</a></li>' % (ico, libelle, meta, ext, DL, bouton)
-    corps = tete_page('Samba', 'Être libre', 'Samba de Damien Poyard, extraite du volume 23. Trois versions à télécharger : la partition, la bande orchestre avec chœurs et la bande orchestre sans chœurs.', ['<a href="partitions.html">Partitions et bandes orchestre</a>', '<a href="#">Samba</a>', 'Être libre'])
+    corps = tete_page('Samba', 'Être libre', 'Samba de Damien Poyard, extraite du volume 23. Trois versions à télécharger : la partition, le play-back orchestre avec chœurs et le play-back orchestre sans chœurs.', ['<a href="partitions.html">Partitions et bandes orchestre</a>', '<a href="#">Samba</a>', 'Être libre'])
     corps += '''<section class="wrap fiche-titre">
   <ul class="variations">
     %s
@@ -529,7 +529,7 @@ def titre():
       <ol>
         <li>Écoutez l'extrait.</li>
         <li>Cliquez sur « Télécharger », le fichier arrive tout de suite.</li>
-        <li>Partition en PDF, bande orchestre en MP3.</li>
+        <li>Partition en PDF, play-back en MP3.</li>
       </ol>
     </div>
     <p class="sacem">%s</p>
@@ -543,12 +543,12 @@ def titre():
 </section>
 ''' % (
         variation(ICO_FILE, 'Partition', 'PDF, 88 Ko', False, 'Télécharger la partition'),
-        variation(ICO_WAVE, 'Bande orchestre avec chœurs', 'MP3, 7,4 Mo', True, 'Télécharger'),
-        variation(ICO_WAVE, 'Bande orchestre sans chœurs', 'MP3, 7,5 Mo', True, 'Télécharger'),
+        variation(ICO_WAVE, 'Play-back orchestre avec chœurs', 'MP3, 7,4 Mo', True, 'Télécharger'),
+        variation(ICO_WAVE, 'Play-back orchestre sans chœurs', 'MP3, 7,5 Mo', True, 'Télécharger'),
         ARROW, e(SACEM), ARROW,
         '\n'.join('      <article class="carte-titre" data-piste>%s<div><h3><a href="#">%s</a></h3><span class="chips"><i>Partition</i><i>Bande orchestre</i></span><div class="ligne-son"><i></i></div></div><a class="fl" href="#" aria-label="Voir %s">%s</a></article>' % (PLAY, e(n), e(n), ARROW) for n in ['Rosita', 'Une jolie tahitienne']),
     )
-    page('titre.html', 'Être libre, samba : partition et bande orchestre', corps)
+    page('titre.html', 'Être libre, samba : partition et play-back orchestre', corps)
 
 
 accueil(); agenda(); boutique(); album(); partitions(); famille(); titre()
